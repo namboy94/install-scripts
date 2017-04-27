@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -av --delete-after '/home/hermann/' hermann@192.168.1.2:/mnt/Main/Backups/PC/Linux/x250
