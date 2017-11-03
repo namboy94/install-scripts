@@ -1,4 +1,5 @@
-# Installation Scripts
+# Installation Scripts [![pipeline status](https://gitlab.namibsun.net/namboy94/install-scripts/badges/master/pipeline.svg)](https://gitlab.namibsun.net/namboy94/install-scripts/commits/master)
+
 
 This is a collection of Installation scripts for various purposes.Each included script is non-destructive, i.e.
 it won't break anything if run twice. Script files that begin with 'd_' are the exception to this.
