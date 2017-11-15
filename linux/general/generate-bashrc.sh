@@ -24,6 +24,7 @@ BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/nano
 VISUAL=/usr/bin/nano
 PATH=$PATH:~/.local/bin
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 alias mount-temp="sshfs -o idmap=user hermann@192.168.1.2:/mnt/Main/Temp ~/Temp"
 ' > ~/.bashrc
 
