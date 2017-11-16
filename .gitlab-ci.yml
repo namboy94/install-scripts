@@ -1,7 +1,5 @@
 stages:
   - mirror
-  - docstats
-  - finalize
 
 github_mirror:
   stage: mirror

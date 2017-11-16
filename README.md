@@ -1,13 +1,16 @@
 # Installation Scripts [![pipeline status](https://gitlab.namibsun.net/namboy94/install-scripts/badges/master/pipeline.svg)](https://gitlab.namibsun.net/namboy94/install-scripts/commits/master)
 
+![Logo](resources/logo/logo-readme.png)
 
 This is a collection of Installation scripts for various purposes.Each included script is non-destructive, i.e.
 it won't break anything if run twice. Script files that begin with 'd_' are the exception to this.
 
 These are mostly for personal use, but feel free to submit issues or contribute code.
 
-# Further Information
+## Further Information
 
+* [Changelog](https://gitlab.namibsun.net/namboy94/install-scripts/raw/master/CHANGELOG)
+* [License (GPLv3)](https://gitlab.namibsun.net/namboy94/install-scripts/raw/master/LICENSE)
 * [Gitlab](https://gitlab.namibsun.net/namboy94/install-scripts)
 * [Github](https://github.com/namboy94/install-scripts)
 * [Git Statistics (gitstats)](https://gitstats.namibsun.net/gitstats/install-scripts/index.html)
