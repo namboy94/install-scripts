@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2017 Hermann Krumrey <hermann@krumreyh.com>
+# Copyright 2017,2018 Hermann Krumrey <hermann@krumreyh.com>
 #
 # This file is part of install-scripts.
 #
