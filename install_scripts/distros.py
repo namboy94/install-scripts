@@ -17,13 +17,15 @@ You should have received a copy of the GNU General Public License
 along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
-from enum import Enum, auto
+from enum import Enum
+from install_scripts.arch import install_packages as arch_install
+from install_scripts.ubuntu import install_packages as ubuntu_install
 
 
 class Distros(Enum):
     """
     Ane enum representing the possible ditributions
     """
-    ARCH = auto
-    UBUNTU = auto
-    FREENAS = auto
+    ARCH = arch_install
+    UBUNTU = ubuntu_install
+    FREENAS = None

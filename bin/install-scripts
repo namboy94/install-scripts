@@ -18,6 +18,8 @@ along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
 import argparse
+from install_scripts.configs import APPLICATION_CONFIGS, MACHINE_CONFIGS,\
+    execute_config
 
 
 def main():
@@ -25,15 +27,13 @@ def main():
     Installs the essentials for the selected platform
     :return: None
     """
+    options = set(MACHINE_CONFIGS.keys())
+    options.update(set(APPLICATION_CONFIGS.keys()))
+
     parser = argparse.ArgumentParser()
     parser.add_argument("config",
-                        choices={
-                            "x250",
-                            "desktop",
-                            "gitlab-server",
-                            "namibsun.net"
-                        },
+                        choices=options,
                         help="The configuration to install")
     config = parser.parse_args().config
 
-
+    execute_config(config)

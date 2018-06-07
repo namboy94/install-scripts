@@ -19,20 +19,21 @@ LICENSE"""
 
 
 import os
+from typing import List
 from install_scripts.helper import process_call
 
 
-def install_package(package: str):
+def install_packages(packages: List[str]):
     """
-    Installs a package on arch linux
+    Installs packages on arch linux
     If it's not installed beforehand,
     pacaur will be installed before any other packages
-    :param package: The package to install
+    :param packages: The packages to install
     :return: None
     """
 
     if not os.path.isfile("/usr/bin/pacaur"):
-        install_package("git")
+        install_packages(["git"])
         process_call(["git", "clone", "https://aur.archlinux.org/pacaur.git"])
         process_call(["gpg", "--recv-keys", "--keyserver",
                       "hkp://pgp.mit.edu", "1EB2638FF56C0C53"])
@@ -40,7 +41,8 @@ def install_package(package: str):
         process_call(["makepkg", "-si"])
         os.chdir("..")
 
-    process_call(["pacaur", "-S", package, "--noconfirm"])
+    for package in packages:
+        process_call(["pacaur", "-Syy", package, "--noconfirm"])
 
 
 def install_essentials(desktop: bool = False):
@@ -53,5 +55,4 @@ def install_essentials(desktop: bool = False):
     if desktop:
         packages += ["firefox", "thunderbird", "sublime-text-dev"]
 
-    for package in packages:
-        install_package(package)
+    install_packages(packages)

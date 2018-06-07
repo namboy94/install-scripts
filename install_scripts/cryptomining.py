@@ -21,7 +21,6 @@ import os
 import sys
 import shutil
 from install_scripts.distros import Distros
-from install_scripts.arch import install_package
 from install_scripts.helper import process_call
 
 
@@ -35,9 +34,8 @@ def build_cpuminer_multi(distro: Distros, destination: str):
     """
 
     if distro == Distros.ARCH:
-        for package in ["git", "make", "gcc", "make", "autpoconf", "automake",
-                        "autogen", "curl", "jansson", "openssl"]:
-            install_package(package)
+        distro.value(["git", "make", "gcc", "make", "autpoconf", "automake",
+                      "autogen", "curl", "jansson", "openssl"])
 
     else:
         print("Building cpuminer-multi not supported on this distro")

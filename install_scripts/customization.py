@@ -17,31 +17,25 @@ You should have received a copy of the GNU General Public License
 along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
+import sys
+from install_scripts.distros import Distros
 
-from typing import List
-from install_scripts.helper import process_call
 
-
-def install_packages(packages: List[str]):
+def install_themes(distro: Distros):
     """
-    Installs packages on ubuntu linux
-    :param packages: The packages to install
+    Install numix themes
+    :param distro: The distro for which to install
     :return: None
     """
-    process_call(["sudo", "apt", "update"])
 
-    for package in packages:
-        process_call(["sudo", "apt", "install", package, "-y"])
+    if distro == Distros.ARCH:
+        distro.value(["numix-icon-theme-git", "arc-gtk-theme"])
+    else:
+        print("This distro is not supported")
+        sys.exit(1)
 
-
-def install_essentials(desktop: bool = False):
-    """
-    Installs essential packages
-    :param desktop: Specifies if this is for a desktop system or not
-    :return: None
-    """
-    packages = ["git", "curl", "wget", "htop"]
-    if desktop:
-        packages += []
-
-    install_packages(packages)
+    print("Manual configuration:")
+    print("Set Window Borders to Arc-Darker")
+    print("Set Icons to Numix")
+    print("Set Controls to Arc-Dark")
+    print("Set Desktop to Arc-Dark")
