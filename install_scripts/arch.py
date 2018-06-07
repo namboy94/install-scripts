@@ -16,3 +16,42 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
+
+
+import os
+from install_scripts.helper import process_call
+
+
+def install_package(package: str):
+    """
+    Installs a package on arch linux
+    If it's not installed beforehand,
+    pacaur will be installed before any other packages
+    :param package: The package to install
+    :return: None
+    """
+
+    if not os.path.isfile("/usr/bin/pacaur"):
+        install_package("git")
+        process_call(["git", "clone", "https://aur.archlinux.org/pacaur.git"])
+        process_call(["gpg", "--recv-keys", "--keyserver",
+                      "hkp://pgp.mit.edu", "1EB2638FF56C0C53"])
+        os.chdir("pacaur")
+        process_call(["makepkg", "-si"])
+        os.chdir("..")
+
+    process_call(["pacaur", "-S", package, "--noconfirm"])
+
+
+def install_essentials(desktop: bool = False):
+    """
+    Installs essential packages
+    :param desktop: Specifies if this is for a desktop system or not
+    :return: None
+    """
+    packages = ["git", "rsync", "curl", "wget"]
+    if desktop:
+        packages += ["firefox", "thunderbird", "sublime-text-dev"]
+
+    for package in packages:
+        install_package(package)
