@@ -1,17 +1,20 @@
-# Installation Scripts [![pipeline status](https://gitlab.namibsun.net/namboy94/install-scripts/badges/master/pipeline.svg)](https://gitlab.namibsun.net/namboy94/install-scripts/commits/master)
+# Installation Scripts
+
+|master|develop|
+|:---:|:---:|
+|[![build status](https://gitlab.namibsun.net/namibsun/python/install-scripts/badges/master/build.svg)](https://gitlab.namibsun.net/namibsun/python/install-scripts/commits/master)|[![build status](https://gitlab.namibsun.net/namibsun/python/install-scripts/badges/develop/build.svg)](https://gitlab.namibsun.net/namibsun/python/install-scripts/commits/develop)|
 
 ![Logo](resources/logo/logo-readme.png)
 
-This is a collection of Installation scripts for various purposes.Each included script is non-destructive, i.e.
-it won't break anything if run twice. Script files that begin with 'd_' are the exception to this.
+This is a collection of Installation scripts for various purposes.
 
 These are mostly for personal use, but feel free to submit issues or contribute code.
 
 ## Further Information
 
-* [Changelog](https://gitlab.namibsun.net/namboy94/install-scripts/raw/master/CHANGELOG)
-* [License (GPLv3)](https://gitlab.namibsun.net/namboy94/install-scripts/raw/master/LICENSE)
-* [Gitlab](https://gitlab.namibsun.net/namboy94/install-scripts)
+* [Changelog](CHANGELOG)
+* [License (GPLv3)](LICENSE)
+* [Gitlab](https://gitlab.namibsun.net/namibsun/python/install-scripts)
 * [Github](https://github.com/namboy94/install-scripts)
-* [Git Statistics (gitstats)](https://gitstats.namibsun.net/gitstats/install-scripts/index.html)
-* [Git Statistics (git_stats)](https://gitstats.namibsun.net/git_stats/install-scripts/index.html)
+* [Progstats](https://progstats.namibsun.net/projects/install-scripts)
+* [PyPi](https://pypi.org/project/install-scripts)
