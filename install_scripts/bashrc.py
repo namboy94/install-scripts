@@ -33,6 +33,13 @@ def base(distro: Distros):
 
     lines = [
         "[[ $- != *i* ]] && return",
+        # Terminal Formatting Start
+        "export PS1=\"[\\[$(tput sgr0)\\]\\[\033[38;5;10m\\]\\u\\"
+        "[$(tput sgr0)\\]\\[\\033[38;5;15m\\]@\\[$(tput sgr0)\\]\\[\\"
+        "033[38;5;27m\\]\\h\\[$(tput sgr0)\\]\\[\\033[38;5;15m\\]:\\"
+        "[$(tput sgr0)\\]\\[\\033[38;5;11m\\]\\w\\[$(tput sgr0)\\]\\"
+        "[\\033[38;5;15m\\]]\\[$(tput sgr0)\\]\"",
+        # Terminal Formatting End
         "alias ls=\"ls --color=auto -lh\"",
         "BROWSER=/usr/bin/firefox",
         "EDITOR=/usr/bin/nano",
@@ -47,7 +54,7 @@ def base(distro: Distros):
         lines[1] = "alias ls=\"ls -lhG\""
 
     with open(os.path.join(os.path.expanduser("~"), ".bashrc"), "w") as bashrc:
-        bashrc.writelines(lines)
+        bashrc.write("\n".join(lines))
 
 
 def add_line_to_bashrc(line: str):

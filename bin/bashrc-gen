@@ -18,26 +18,12 @@ along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
 import argparse
-from install_scripts.configs import APPLICATION_CONFIGS, MACHINE_CONFIGS,\
-    execute_config
+from install_scripts.bashrc import base
+from install_scripts.distros import Distros
 
 
 def main():
-    """
-    Installs the essentials for the selected platform
-    :return: None
-    """
-    options = set(MACHINE_CONFIGS.keys())
-    options.update(set(APPLICATION_CONFIGS.keys()))
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("config",
-                        choices=options,
-                        help="The configuration to install")
-    config = parser.parse_args().config
-
-    execute_config(config)
-
+    base(Distros.ARCH)
 
 if __name__ == "__main__":
     main()
