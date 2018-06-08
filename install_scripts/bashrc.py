@@ -33,6 +33,10 @@ def base(distro: Distros):
 
     lines = [
         "[[ $- != *i* ]] && return",
+        "alias ls=\"ls --color=auto -lh\"",
+        "alias youtube-mp3=\"youtube-dl --extract-audio --audio-format mp3\"",
+        "alias python=python3",
+        "alias pip=pip3",
         # Terminal Formatting Start
         "export PS1=\"[\\[$(tput sgr0)\\]\\[\033[38;5;10m\\]\\u\\"
         "[$(tput sgr0)\\]\\[\\033[38;5;15m\\]@\\[$(tput sgr0)\\]\\[\\"
@@ -40,18 +44,16 @@ def base(distro: Distros):
         "[$(tput sgr0)\\]\\[\\033[38;5;11m\\]\\w\\[$(tput sgr0)\\]\\"
         "[\\033[38;5;15m\\]]\\[$(tput sgr0)\\]\"",
         # Terminal Formatting End
-        "alias ls=\"ls --color=auto -lh\"",
         "BROWSER=/usr/bin/firefox",
         "EDITOR=/usr/bin/nano",
         "VISUAL=/usr/bin/nano",
         "PATH=$PATH:~/.local/bin",
-        "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk",
-        "alias youtube-mp3=\"youtube-dl --extract-audio --audio-format mp3\""
+        "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk"
     ]
 
     # Adjust ls alias for freenas
     if distro == Distros.FREENAS:
-        lines[1] = "alias ls=\"ls -lhG\""
+        lines[2] = "alias ls=\"ls -lhG\""
 
     with open(os.path.join(os.path.expanduser("~"), ".bashrc"), "w") as bashrc:
         bashrc.write("\n".join(lines))
