@@ -34,8 +34,10 @@ def build_cpuminer_multi(distro: Distros, destination: str):
     """
 
     if distro == Distros.ARCH:
-        distro.value(["git", "make", "gcc", "make", "autpoconf", "automake",
-                      "autogen", "curl", "jansson", "openssl"])
+        distro.value["install"]([
+            "git", "make", "gcc", "make", "autpoconf", "automake",
+            "autogen", "curl", "jansson", "openssl"
+        ])
 
     else:
         print("Building cpuminer-multi not supported on this distro")

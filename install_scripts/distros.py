@@ -26,6 +26,6 @@ class Distros(Enum):
     """
     Ane enum representing the possible ditributions
     """
-    ARCH = arch_install
-    UBUNTU = ubuntu_install
+    ARCH = {"install": arch_install}
+    UBUNTU = {"install": ubuntu_install}
     FREENAS = None

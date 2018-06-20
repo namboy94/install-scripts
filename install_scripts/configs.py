@@ -79,4 +79,5 @@ def execute_config(entry: str):
 
     commands = config[entry]
     for command in commands:
+        print(command)
         command[0](*command[1])
