@@ -67,7 +67,7 @@ def add_line_to_bashrc(line: str):
     """
 
     with open(os.path.join(os.path.expanduser("~"), ".bashrc"), "a") as bashrc:
-        bashrc.write(line)
+        bashrc.write("\n" + line)
 
 
 def add_nas_bashrc_lines(desktop: bool):
@@ -86,7 +86,7 @@ def add_nas_bashrc_lines(desktop: bool):
             "alias mount-temp=\"sshfs -o idmap=user "
             "hermann@192.168.1.2:/mnt/Main/ ~/freenas\"",
             "alias backup=\"rsync -av --delete-after ~/ "
-            "192.168.1.2:/mnt/Main/Backups/Linux/$(hostname -f)\"",
+            "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\"",
             "alias media-upload='"
             "rsync -av --delete-after"
             "/run/media/hermann/Japanese\\ Media/Japanese\\ Media/ "
@@ -100,7 +100,7 @@ def add_nas_bashrc_lines(desktop: bool):
             "alias mount-temp=\"sshfs -o idmap=user -p 9022 "
             "hermann@krumreyh.asuscomm.com:/mnt/Main/ ~/freenas\"",
             "alias backup=\"rsync -av --delete-after -e \"ssh -p 9022\" ~/ "
-            "192.168.1.2:/mnt/Main/Backups/Linux/$(hostname -f)\"",
+            "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\"",
         ]
 
     for line in lines:

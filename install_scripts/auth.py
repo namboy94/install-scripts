@@ -20,7 +20,6 @@ LICENSE"""
 import sys
 from subprocess import Popen
 from install_scripts.distros import Distros
-from install_scripts.helper import process_call
 
 
 def install_fingerprint_auth(distro: Distros):
@@ -31,15 +30,15 @@ def install_fingerprint_auth(distro: Distros):
     """
 
     if distro == Distros.ARCH:
-        distro.value(["fprintd"])
+        distro.value["install"](["fprintd"])
     else:
         print("This distro is not supported")
         sys.exit(1)
 
-    Popen("sudo sed -i '2iauth      sufficient pam_fprintd.so' /etc/pam.d/*",
-          shell=True).wait()
     print("Enrolling Fingers:")
     print("Right Index Finger:")
-    process_call(["fprintd-enroll"])
+    Popen(["fprintd-enroll"]).wait()
     print("Right Middle Finger:")
-    process_call(["fprintd-enroll", "-f", "right-middle-finger"])
+    Popen(["fprintd-enroll", "-f", "right-middle-finger"]).wait()
+    Popen("sudo sed -i '2iauth      sufficient pam_fprintd.so' /etc/pam.d/*",
+          shell=True).wait()

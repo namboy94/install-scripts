@@ -29,7 +29,7 @@ def install_themes(distro: Distros):
     """
 
     if distro == Distros.ARCH:
-        distro.value(["numix-icon-theme-git", "arc-gtk-theme"])
+        distro.value["install"](["numix-icon-theme-git", "arc-gtk-theme"])
     else:
         print("This distro is not supported")
         sys.exit(1)

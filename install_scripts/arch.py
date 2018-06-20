@@ -19,7 +19,9 @@ LICENSE"""
 
 
 import os
+import shutil
 from typing import List
+from subprocess import Popen
 from install_scripts.helper import process_call
 
 
@@ -33,16 +35,16 @@ def install_packages(packages: List[str]):
     """
 
     if not os.path.isfile("/usr/bin/pacaur"):
-        install_packages(["git"])
+        process_call(["sudo", "pacman", "-S", "git", "--noconfirm"])
         process_call(["git", "clone", "https://aur.archlinux.org/pacaur.git"])
         process_call(["gpg", "--recv-keys", "--keyserver",
                       "hkp://pgp.mit.edu", "1EB2638FF56C0C53"])
         os.chdir("pacaur")
-        process_call(["makepkg", "-si"])
+        process_call(["makepkg", "-si", "--noconfirm"])
         os.chdir("..")
+        shutil.rmtree("pacaur")
 
-    for package in packages:
-        process_call(["pacaur", "-Syy", package, "--noconfirm"])
+    Popen(["pacaur", "-Syy", "--noconfirm"] + packages).wait()
 
 
 def install_essentials(desktop: bool = False):
