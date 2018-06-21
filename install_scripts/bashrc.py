@@ -56,7 +56,7 @@ def base(distro: Distros):
         lines[2] = "alias ls=\"ls -lhG\""
 
     with open(os.path.join(os.path.expanduser("~"), ".bashrc"), "w") as bashrc:
-        bashrc.write("\n".join(lines))
+        bashrc.write("\n".join(lines + [""]))
 
 
 def add_line_to_bashrc(line: str):
@@ -83,7 +83,7 @@ def add_nas_bashrc_lines(desktop: bool):
 
     if desktop:
         lines = [
-            "alias mount-temp=\"sshfs -o idmap=user "
+            "alias mount-nas=\"sshfs -o idmap=user "
             "hermann@192.168.1.2:/mnt/Main/ ~/freenas\"",
             "alias backup=\"rsync -av --delete-after ~/ "
             "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\"",
@@ -97,11 +97,14 @@ def add_nas_bashrc_lines(desktop: bool):
         ]
     else:
         lines = [
-            "alias mount-temp=\"sshfs -o idmap=user -p 9022 "
-            "hermann@krumreyh.asuscomm.com:/mnt/Main/ ~/freenas\"",
-            "alias backup=\"rsync -av --delete-after -e \"ssh -p 9022\" ~/ "
-            "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\"",
+            "alias mount-nas=\"sshfs -o idmap=user -p 9022 "
+            "krumreyh.asuscomm.com:/mnt/Main/ ~/freenas\"",
+            "alias backup='rsync -av --delete-after -e \"ssh -p 9022\" ~/ "
+            "krumreyh.asuscomm.com:/mnt/Main/Backups/system/$(hostname -f)'",
         ]
 
+    lines += [
+        "alias unmount-nas=\"fusermount -u ~/freenas\""
+    ]
     for line in lines:
         add_line_to_bashrc(line)
