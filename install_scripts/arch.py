@@ -53,8 +53,9 @@ def install_essentials(desktop: bool = False):
     :param desktop: Specifies if this is for a desktop system or not
     :return: None
     """
-    packages = ["git", "rsync", "curl", "wget"]
+    packages = ["git", "rsync", "curl", "wget", "python", "python-pip"]
     if desktop:
-        packages += ["firefox", "thunderbird", "sublime-text-dev"]
+        packages += ["firefox", "thunderbird", "sublime-text-dev",
+                     "jetbrains-toolbox", "sshfs", "youtube-dl"]
 
     install_packages(packages)

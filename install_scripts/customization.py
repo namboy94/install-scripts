@@ -19,6 +19,7 @@ LICENSE"""
 
 import sys
 from install_scripts.distros import Distros
+from install_scripts.helper import process_call
 
 
 def install_themes(distro: Distros):
@@ -34,8 +35,10 @@ def install_themes(distro: Distros):
         print("This distro is not supported")
         sys.exit(1)
 
-    print("Manual configuration:")
-    print("Set Window Borders to Arc-Darker")
-    print("Set Icons to Numix")
-    print("Set Controls to Arc-Dark")
-    print("Set Desktop to Arc-Dark")
+    for setting in [
+        ["org.cinnamon.desktop.interface", "icon-theme", "Numix-Square"],
+        ["org.cinnamon.desktop.interface", "gtk-theme", "Arc-Dark"],
+        ["org.cinnamon.theme", "name", "Arc-Dark"],
+        ["org.cinnamon.desktop.wm.preferences", "theme", "Arc-Darker"]
+    ]:
+        process_call(["gsettings"] + setting)
