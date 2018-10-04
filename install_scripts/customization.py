@@ -41,4 +41,4 @@ def install_themes(distro: Distros):
         ["org.cinnamon.theme", "name", "Arc-Dark"],
         ["org.cinnamon.desktop.wm.preferences", "theme", "Arc-Darker"]
     ]:
-        process_call(["gsettings"] + setting)
+        process_call(["gsettings", "set"] + setting)

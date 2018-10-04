@@ -93,7 +93,7 @@ def add_nas_bashrc_lines(desktop: bool):
             "\"192.168.1.2:/mnt/Main/Storage/Japanese\\ Media\"; "
             "rsync -av --delete-after "
             "/run/media/hermann/Media/Media/ "
-            "192.168.1.2:/mnt/Main/Storage/Media"
+            "192.168.1.2:/mnt/Main/Storage/Media'"
         ]
     else:
         lines = [
