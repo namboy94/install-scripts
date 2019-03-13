@@ -88,7 +88,7 @@ def add_nas_bashrc_lines(desktop: bool):
             "alias backup=\"rsync -av --delete-after ~/ "
             "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\"",
             "alias media-upload='"
-            "rsync -av --delete-after"
+            "rsync -av --delete-after "
             "/run/media/hermann/Japanese\\ Media/Japanese\\ Media/ "
             "\"192.168.1.2:/mnt/Main/Storage/Japanese\\ Media\"; "
             "rsync -av --delete-after "

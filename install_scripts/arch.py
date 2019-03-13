@@ -54,6 +54,13 @@ def install_essentials(desktop: bool = False):
     :return: None
     """
     packages = ["git", "rsync", "curl", "wget", "python", "python-pip"]
+
+    # Fonts
+    packages += [
+        "otf-ipafont", "noto-fonts-cjk", "noto-fonts-emoji", "noto-fonts"
+    ]
+
+    # Packegs for non-servers
     if desktop:
         packages += ["firefox", "thunderbird", "sublime-text-dev",
                      "jetbrains-toolbox", "sshfs", "youtube-dl"]
