@@ -35,20 +35,23 @@ def install_fingerprint_auth(distro: Distros):
 
         # Currently, there's a bug with the newest fprintd causing
         # the program to crash while enrolling the fingerprints
-        # distro.value["install"](["fprintd"])
+        
+
+        # Error has been resolved!
+        distro.value["install"](["fprintd"])
 
         # Use older versions instead
-        fprintd = "https://archive.archlinux.org/packages/f/fprintd/" \
-                  "fprintd-0.7.0-1-x86_64.pkg.tar.xz"
-        libfprint = "https://archive.archlinux.org/packages/l/libfprint/" \
-                    "libfprint-0.7.0-1-x86_64.pkg.tar.xz"
-        process_call(["wget", fprintd])
-        process_call(["wget", libfprint])
-        process_call(["sudo", "pacman", "-U", "--noconfirm",
-                      fprintd.rsplit("/", 1)[1],
-                      libfprint.rsplit("/", 1)[1]])
-        os.remove(fprintd.rsplit("/", 1)[1])
-        os.remove(libfprint.rsplit("/", 1)[1])
+        #fprintd = "https://archive.archlinux.org/packages/f/fprintd/" \
+        #          "fprintd-0.7.0-1-x86_64.pkg.tar.xz"
+        #libfprint = "https://archive.archlinux.org/packages/l/libfprint/" \
+        #            "libfprint-0.7.0-1-x86_64.pkg.tar.xz"
+        #process_call(["wget", fprintd])
+        #process_call(["wget", libfprint])
+        #process_call(["sudo", "pacman", "-U", "--noconfirm",
+        #              fprintd.rsplit("/", 1)[1],
+        #              libfprint.rsplit("/", 1)[1]])
+        #os.remove(fprintd.rsplit("/", 1)[1])
+        #os.remove(libfprint.rsplit("/", 1)[1])
 
     else:
         print("This distro is not supported")

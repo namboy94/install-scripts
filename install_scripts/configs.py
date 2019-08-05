@@ -29,7 +29,7 @@ from install_scripts.bashrc import base, add_nas_bashrc_lines
 
 MACHINE_CONFIGS = {
     "x250": [
-        # (install_essentials, (True,)),
+        (install_essentials, (True,)),
         (install_fingerprint_auth, (Distros.ARCH,)),
         (install_themes, (Distros.ARCH,)),
         (block_reddit, ()),

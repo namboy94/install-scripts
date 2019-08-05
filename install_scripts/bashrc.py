@@ -84,27 +84,20 @@ def add_nas_bashrc_lines(desktop: bool):
     if desktop:
         lines = [
             "alias mount-nas=\"sshfs -o idmap=user "
-            "hermann@192.168.1.2:/mnt/Main/ ~/freenas\"",
+            "hermann@192.168.1.2:/mnt/ ~/nas\"",
             "alias backup=\"rsync -av --delete-after ~/ "
-            "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\"",
-            "alias media-upload='"
-            "rsync -av --delete-after"
-            "/run/media/hermann/Japanese\\ Media/Japanese\\ Media/ "
-            "\"192.168.1.2:/mnt/Main/Storage/Japanese\\ Media\"; "
-            "rsync -av --delete-after "
-            "/run/media/hermann/Media/Media/ "
-            "192.168.1.2:/mnt/Main/Storage/Media"
+            "192.168.1.2:/mnt/Main/Backups/system/$(hostname -f)\""
         ]
     else:
         lines = [
             "alias mount-nas=\"sshfs -o idmap=user -p 9022 "
-            "krumreyh.asuscomm.com:/mnt/Main/ ~/freenas\"",
+            "cloud.krumreyh.com:/mnt/ ~/nas\"",
             "alias backup='rsync -av --delete-after -e \"ssh -p 9022\" ~/ "
             "krumreyh.asuscomm.com:/mnt/Main/Backups/system/$(hostname -f)'",
         ]
 
     lines += [
-        "alias unmount-nas=\"fusermount -u ~/freenas\""
+        "alias unmount-nas=\"fusermount -u ~/nas\""
     ]
     for line in lines:
         add_line_to_bashrc(line)

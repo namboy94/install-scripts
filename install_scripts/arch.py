@@ -37,8 +37,8 @@ def install_packages(packages: List[str]):
     if not os.path.isfile("/usr/bin/pacaur"):
         process_call(["sudo", "pacman", "-S", "git", "--noconfirm"])
         process_call(["git", "clone", "https://aur.archlinux.org/pacaur.git"])
-        process_call(["gpg", "--recv-keys", "--keyserver",
-                      "hkp://pgp.mit.edu", "1EB2638FF56C0C53"])
+        #process_call(["gpg", "--recv-keys", "--keyserver",
+        #              "hkp://pgp.mit.edu", "1EB2638FF56C0C53"])
         os.chdir("pacaur")
         process_call(["makepkg", "-si", "--noconfirm"])
         os.chdir("..")
