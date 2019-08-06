@@ -17,11 +17,9 @@ You should have received a copy of the GNU General Public License
 along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
-import os
 import sys
 from subprocess import Popen
 from install_scripts.distros import Distros
-from install_scripts.helper import process_call
 
 
 def install_fingerprint_auth(distro: Distros):
@@ -32,27 +30,7 @@ def install_fingerprint_auth(distro: Distros):
     """
 
     if distro == Distros.ARCH:
-
-        # Currently, there's a bug with the newest fprintd causing
-        # the program to crash while enrolling the fingerprints
-        
-
-        # Error has been resolved!
         distro.value["install"](["fprintd"])
-
-        # Use older versions instead
-        #fprintd = "https://archive.archlinux.org/packages/f/fprintd/" \
-        #          "fprintd-0.7.0-1-x86_64.pkg.tar.xz"
-        #libfprint = "https://archive.archlinux.org/packages/l/libfprint/" \
-        #            "libfprint-0.7.0-1-x86_64.pkg.tar.xz"
-        #process_call(["wget", fprintd])
-        #process_call(["wget", libfprint])
-        #process_call(["sudo", "pacman", "-U", "--noconfirm",
-        #              fprintd.rsplit("/", 1)[1],
-        #              libfprint.rsplit("/", 1)[1]])
-        #os.remove(fprintd.rsplit("/", 1)[1])
-        #os.remove(libfprint.rsplit("/", 1)[1])
-
     else:
         print("This distro is not supported")
         sys.exit(1)
