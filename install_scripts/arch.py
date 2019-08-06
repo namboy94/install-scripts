@@ -92,7 +92,9 @@ def install_essentials(desktop: bool = False):
             "eog",
             "evince",
             "libreoffice",
-            "gnome-terminal"
+            "gnome-terminal",
+            "steam",
+            "proton"
         ]
 
     install_packages(packages)
