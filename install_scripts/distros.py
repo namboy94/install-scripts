@@ -24,7 +24,7 @@ from install_scripts.ubuntu import install_packages as ubuntu_install
 
 class Distros(Enum):
     """
-    Ane enum representing the possible ditributions
+    An enum representing the possible ditributions
     """
     ARCH = {"install": arch_install}
     UBUNTU = {"install": ubuntu_install}
