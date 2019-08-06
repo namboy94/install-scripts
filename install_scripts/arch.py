@@ -73,13 +73,18 @@ def install_essentials(desktop: bool = False):
         "openssh",
         "sshfs",
         "youtube-dl",
-        "unrar"
+        "unrar",
+        "docker"
     ]
     if desktop:
 
         # Fonts
         packages += [
-            "otf-ipafont", "noto-fonts-cjk", "noto-fonts-emoji", "noto-fonts"
+            "otf-ipafont",
+            "noto-fonts-cjk",
+            "noto-fonts-emoji",
+            "noto-fonts",
+            "ttf-dejavu"
         ]
 
         packages += [
@@ -94,7 +99,8 @@ def install_essentials(desktop: bool = False):
             "libreoffice",
             "gnome-terminal",
             "steam",
-            "proton"
+            "proton-git",
+            "telegram-desktop"
         ]
 
     install_packages(packages)
