@@ -36,15 +36,24 @@ def install_packages(packages: List[str]):
 
     if not os.path.isfile("/usr/bin/pacaur"):
         process_call(["sudo", "pacman", "-S", "git", "--noconfirm"])
-        process_call(["git", "clone", "https://aur.archlinux.org/pacaur.git"])
-        #process_call(["gpg", "--recv-keys", "--keyserver",
-        #              "hkp://pgp.mit.edu", "1EB2638FF56C0C53"])
-        os.chdir("pacaur")
-        process_call(["makepkg", "-si", "--noconfirm"])
-        os.chdir("..")
-        shutil.rmtree("pacaur")
+        install_aur_package("https://aur.archlinux.org/auracle-git.git")
+        install_aur_package("https://aur.archlinux.org/pacaur.git")
 
     Popen(["pacaur", "-Syy", "--noconfirm"] + packages).wait()
+
+
+def install_aur_package(git_url: str):
+    """
+    Installs an AUR package from a git URL
+    :param git_url: The URL of the git repository
+    :return: None
+    """
+    # Make sure git is installed
+    process_call(["git", "clone", git_url, "aur-package"])
+    os.chdir("aur-package")
+    process_call(["makepkg", "-si", "--noconfirm"])
+    os.chdir("..")
+    shutil.rmtree("aur-package")
 
 
 def install_essentials(desktop: bool = False):
@@ -53,9 +62,31 @@ def install_essentials(desktop: bool = False):
     :param desktop: Specifies if this is for a desktop system or not
     :return: None
     """
-    packages = ["git", "rsync", "curl", "wget", "python", "python-pip"]
+    packages = [
+        "git",
+        "rsync",
+        "curl",
+        "wget",
+        "python",
+        "python-pip",
+        "python-setuptools",
+        "openssh",
+        "sshfs",
+        "youtube-dl",
+        "unrar"
+    ]
     if desktop:
-        packages += ["firefox", "thunderbird", "sublime-text-dev",
-                     "jetbrains-toolbox", "sshfs", "youtube-dl"]
+        packages += [
+            "firefox",
+            "thunderbird",
+            "sublime-text-dev",
+            "jetbrains-toolbox",
+            "nextcloud-client",
+            "vlc",
+            "eog",
+            "evince",
+            "libreoffice",
+            "gnome-terminal"
+        ]
 
     install_packages(packages)

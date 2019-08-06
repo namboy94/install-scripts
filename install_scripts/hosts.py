@@ -28,7 +28,7 @@ def block_reddit():
     block_domain("reddit.com")
     for subdomain in ["www", "np", "blog", "fr", "pay", "es", "en-us", "en",
                       "ru", "us", "de", "dd", "no", "pt", "ww", "ss", "4x",
-                      "sv", "nl", "hw", "hr"]:
+                      "sv", "nl", "hw", "hr", "old"]:
         block_domain(subdomain + ".reddit.com")
 
 

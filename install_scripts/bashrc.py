@@ -93,7 +93,7 @@ def add_nas_bashrc_lines(desktop: bool):
             "alias mount-nas=\"sshfs -o idmap=user -p 9022 "
             "cloud.krumreyh.com:/mnt/ ~/nas\"",
             "alias backup='rsync -av --delete-after -e \"ssh -p 9022\" ~/ "
-            "krumreyh.asuscomm.com:/mnt/Main/Backups/system/$(hostname -f)'",
+            "cloud.krumreyh.com:/mnt/Main/Backups/system/$(hostname -f)'",
         ]
 
     lines += [
