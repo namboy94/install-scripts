@@ -1,3 +1,5 @@
+V 0.1.6:
+  - Consolidated changes so far
 V 0.1.5:
   - Fixed gsettings commands
   - Fixed bashrc issues on desktop
