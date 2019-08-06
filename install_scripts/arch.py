@@ -76,6 +76,12 @@ def install_essentials(desktop: bool = False):
         "unrar"
     ]
     if desktop:
+
+        # Fonts
+        packages += [
+            "otf-ipafont", "noto-fonts-cjk", "noto-fonts-emoji", "noto-fonts"
+        ]
+
         packages += [
             "firefox",
             "thunderbird",

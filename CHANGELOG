@@ -1,3 +1,6 @@
+V 0.1.5:
+  - Fixed gsettings commands
+  - Fixed bashrc issues on desktop
 V 0.1.4:
   - More x250 script fixes
 V 0.1.3:
