@@ -18,6 +18,7 @@ along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
 import sys
+from typing import Optional
 from install_scripts.distros import Distros
 from install_scripts.arch import install_essentials
 from install_scripts.auth import install_fingerprint_auth
@@ -29,6 +30,14 @@ from install_scripts.bashrc import base, add_nas_bashrc_lines
 
 MACHINE_CONFIGS = {
     "x250-arch": [
+        (install_essentials, (True,)),
+        (install_fingerprint_auth, (Distros.ARCH,)),
+        (install_themes, (Distros.ARCH,)),
+        (block_reddit, ()),
+        (base, (Distros.ARCH,)),
+        (add_nas_bashrc_lines, (False,))
+    ],
+    "x250-ubuntu": [
         (install_essentials, (True,)),
         (install_fingerprint_auth, (Distros.ARCH,)),
         (install_themes, (Distros.ARCH,)),
@@ -56,10 +65,11 @@ APPLICATION_CONFIGS = {
 }
 
 
-def execute_config(entry: str):
+def execute_config(entry: str, bash_file: Optional[str] = None):
     """
     Executes a configuration
     :param entry: The entry in the configuration to execute
+    :param bash_file: Optional bash file in which to store the script
     :return: None
     """
 

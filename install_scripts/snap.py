@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """LICENSE
 Copyright 2017 Hermann Krumrey <hermann@krumreyh.com>
 
@@ -18,28 +17,13 @@ You should have received a copy of the GNU General Public License
 along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
-import argparse
-from install_scripts.configs import APPLICATION_CONFIGS, MACHINE_CONFIGS,\
-    execute_config
+from typing import List
 
 
-def main():
+def install_packages(packages: List[str]):
     """
-    Installs the essentials for the selected platform
+    Installs packages using snap
+    :param packages: The packages to install
     :return: None
     """
-    options = set(MACHINE_CONFIGS.keys())
-    options.update(set(APPLICATION_CONFIGS.keys()))
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("config",
-                        choices=options,
-                        help="The configuration to install")
-    parser.add_argument("--out", help="Path to generated bash file")
-    args = parser.parse_args()
-
-    execute_config(args.config, args.out)
-
-
-if __name__ == "__main__":
-    main()
+    Popen(["sudo", "snap", "install"] + packages).wait()

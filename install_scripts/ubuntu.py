@@ -17,9 +17,9 @@ You should have received a copy of the GNU General Public License
 along with install-scripts.  If not, see <http://www.gnu.org/licenses/>.
 LICENSE"""
 
-
 from typing import List
 from install_scripts.helper import process_call
+from install_scripts.snap import install_packages as install_snap_packages
 
 
 def install_packages(packages: List[str]):
@@ -40,8 +40,24 @@ def install_essentials(desktop: bool = False):
     :param desktop: Specifies if this is for a desktop system or not
     :return: None
     """
-    packages = ["git", "curl", "wget", "htop"]
+    packages = [
+        "git",
+        "curl",
+        "wget",
+        "htop",
+        "python3-pip"
+    ]
+    snap_packages = []
     if desktop:
-        packages += []
+        packages += [
+            "cinnamon",
+            "firefox",
+            "thunderbird",
+            "telegram-desktop"
+        ]
+        snap_packages += [
+            "pycharm-professional"
+        ]
 
     install_packages(packages)
+    install_snap_packages(snap_packages)
